@@ -265,7 +265,7 @@ module Clever
     def valid?
       ell_status_validator = EnumAttributeValidator.new('String', ["Y", "N", ""])
       return false unless ell_status_validator.valid?(@ell_status)
-      gender_validator = EnumAttributeValidator.new('String', ["M", "F", ""])
+      gender_validator = EnumAttributeValidator.new('String', ["M", "F", "X", ""])
       return false unless gender_validator.valid?(@gender)
       grade_validator = EnumAttributeValidator.new('String', ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "PreKindergarten", "Kindergarten", "PostGraduate", "Other"])
       return false unless grade_validator.valid?(@grade)
@@ -291,7 +291,7 @@ module Clever
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] gender Object to be assigned
     def gender=(gender)
-      validator = EnumAttributeValidator.new('String', ["M", "F", ""])
+      validator = EnumAttributeValidator.new('String', ["M", "F", "X", ""])
       unless validator.valid?(gender)
         fail ArgumentError, "invalid value for 'gender', must be one of #{validator.allowable_values}."
       end
